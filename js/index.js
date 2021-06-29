@@ -7,8 +7,8 @@ const musicSound = new Audio('Music/music.mp3');
 let speed = 7;
 let score = 0;
 let lastPaintTime = 0;
-let snakeArr = [{x: 13, y: 15}];
-food = {x: 6, y: 7};
+let snakeArr = [{x: 13, y: 15}];                          //defines starting position of snake
+food = {x: 6, y: 7};                                      //defines starting position of food
 
 
 // Game Functions
@@ -56,13 +56,13 @@ function gameEngine() {
         foodSound.play();
         score += 1;
 
-        if (score > maxscore) {
+        if (score > maxscoreval) {
             maxscoreval = score;
-            maxscore = localStorage.setItem("maxscore", JSON.stringify(maxscoreval));
+            localStorage.setItem("maxscore", JSON.stringify(maxscoreval));
             maxscoreBox.innerHTML = "Max score: " + maxscoreval;
         }
-
         scoreBox.innerHTML = "Score: " + score;
+
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
         let a = 2;
         let b = 16;
@@ -116,8 +116,8 @@ else {
     maxscoreBox.innerHTML = "Max score: " + maxscore;
 }
 
-window.requestAnimationFrame(main);                                          //Can use setInterval function also
-window.addEventListener('keydown', e => {                                    //Keyboard buttons navigation
+window.requestAnimationFrame(main);                           //Can use setInterval function also but it slow downs the whole process
+window.addEventListener('keydown', e => {                     //Keyboard buttons navigation
     inputDir = { x: 0, y: 1 };
     moveSound.play();
     switch (e.key) {
