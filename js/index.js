@@ -4,7 +4,7 @@ const foodSound = new Audio('Music/food.mp3');
 const gameoverSound = new Audio('Music/gameover.mp3');
 const moveSound = new Audio('Music/move.mp3');
 const musicSound = new Audio('Music/music.mp3');
-let speed = 7;
+let speed = 5;
 let score = 0;
 let lastPaintTime = 0;
 let snakeArr = [{x: 13, y: 15}];                          //defines starting position of snake
@@ -14,7 +14,7 @@ food = {x: 6, y: 7};                                      //defines starting pos
 // Game Functions
 function main(currenttime) {
     window.requestAnimationFrame(main);
-    if ((currenttime - lastPaintTime) / 1000 < 1 / speed) {
+    if ((currenttime - lastPaintTime)/1000 < 1/speed) {
         return;
     }
     lastPaintTime = currenttime;
@@ -60,6 +60,13 @@ function gameEngine() {
             maxscoreval = score;
             localStorage.setItem("maxscore", JSON.stringify(maxscoreval));
             maxscoreBox.innerHTML = "Max score: " + maxscoreval;
+        }
+
+        if(score >= 10){
+            speed = 7;
+        }
+        else if(score >= 20){
+            speed = 9;
         }
         scoreBox.innerHTML = "Score: " + score;
 
