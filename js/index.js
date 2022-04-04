@@ -11,7 +11,7 @@ let snakeArr = [{x: 13, y: 15}];                          //defines starting pos
 food = {x: 6, y: 7};                                      //defines starting position of food
 
 
-// Game Functions
+// Game Function
 function main(currenttime) {
     musicSound.play();
     window.requestAnimationFrame(main);
