@@ -13,6 +13,7 @@ food = {x: 6, y: 7};                                      //defines starting pos
 
 // Game Functions
 function main(currenttime) {
+    musicSound.play();
     window.requestAnimationFrame(main);
     if ((currenttime - lastPaintTime)/1000 < 1/speed) {
         return;
